@@ -1,61 +1,100 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f4f4f4;
-  color: #2d3436;
-  padding: 2rem;
-  text-align: center;
+    background: #fdf6fb;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #3c2a4d;
+    margin: 0;
+    padding: 0 0 50px 0;
 }
 
 h1 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
+    text-align: center;
+    margin-top: 30px;
+    color: #784F58;
+}
+
+#malla {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 40px;
 }
 
 .semestre {
-  margin-bottom: 3rem;
+    background: #f3e8ff;
+    border-radius: 15px;
+    box-shadow: 0 6px 24px #b49fcc34;
+    padding: 18px 16px 20px 16px;
+    margin: 12px;
+    min-width: 250px;
+    width: 270px;
+    flex-grow: 1;
 }
 
 .semestre h2 {
-  background-color: #0984e3;
-  color: white;
-  padding: 10px;
-  border-radius: 8px;
+    background: #c3e6cb;
+    border-radius: 8px;
+    padding: 7px 0 7px 0;
+    text-align: center;
+    margin: 0 0 16px 0;
+    font-size: 1.15em;
+    color: #3f5957;
+    letter-spacing: 0.5px;
 }
 
-.materias {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 10px;
-  margin-top: 1rem;
+.ramo-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
 }
 
-.materia {
-  background: #dfe6e9;
-  padding: 15px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.ramo {
+    background: #74b9ff;
+    border: 2px solid #b2bec3;
+    border-radius: 8px;
+    padding: 12px 7px 12px 16px;
+    font-size: 1em;
+    color: #2d3436;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.2s, border 0.2s, color 0.2s;
+    opacity: 0.5;
+    position: relative;
+    text-align: left;
+    user-select: none;
 }
 
-.materia:hover {
-  background: #b2bec3;
+.ramo.habilitado {
+    opacity: 1;
+    background: #a29bfe;
+    border-color: #6c5ce7;
+    cursor: pointer;
 }
 
-/* Estados de materias */
-.aprobada {
-  background-color: #55efc4 !important;
-  color: #2d3436;
-  font-weight: bold;
+.ramo.aprobado {
+    background: #ffeaa7;
+    color: #00b894;
+    border-color: #00b894;
+    opacity: 1;
+    cursor: default;
 }
 
-.cursando {
-  background-color: #ffeaa7 !important;
-  color: #2d3436;
-  font-weight: bold;
+.requisitos {
+    color: #7a7a7a;
+    font-size: 0.92em;
+    margin-top: 16px;
+    background: #e3e7fd;
+    border-radius: 7px;
+    padding: 7px 7px 7px 10px;
 }
 
-.pendiente {
-  background-color: #fab1a0 !important;
-  color: #2d3436;
-  font-weight: bold;
+@media (max-width: 900px) {
+    #malla {
+        flex-direction: column;
+        align-items: center;
+    }
+    .semestre {
+        width: 95vw;
+        min-width: 240px;
+    }
 }
