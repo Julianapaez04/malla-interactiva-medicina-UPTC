@@ -3,81 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malla Curricular Medicina</title>
+    <title>Malla Curricular Medicina UPTC</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Malla Curricular Medicina</h1>
     <div id="malla"></div>
-
-    <script>
-const malla = document.getElementById("malla");
-
-const materiasPorSemestre = [
-    {
-        semestre: "1er Semestre",
-        materias: ["Biología Celular", "Química General", "Introducción a la Medicina", "Salud Pública I", "Metodología de la Investigación", "Anatomía I"]
-    },
-    {
-        semestre: "2do Semestre",
-        materias: ["Bioquímica", "Anatomía II", "Fisiología I", "Psicología Médica", "Salud Pública II"]
-    },
-    {
-        semestre: "3er Semestre",
-        materias: ["Fisiología II", "Microbiología", "Parasitología", "Farmacología I", "Semiología I"]
-    },
-    {
-        semestre: "4to Semestre",
-        materias: ["Farmacología II", "Patología I", "Inmunología", "Semiología II", "Ética Médica"]
-    },
-    {
-        semestre: "5to Semestre",
-        materias: ["Patología II", "Clínica Propedéutica", "Radiología", "Salud Mental", "Terapéutica Médica"]
-    },
-    {
-        semestre: "6to Semestre",
-        materias: ["Medicina Interna I", "Pediatría I", "Gineco-Obstetricia I", "Cirugía I", "Salud Pública III"]
-    },
-    {
-        semestre: "7mo Semestre",
-        materias: ["Medicina Interna II", "Pediatría II", "Gineco-Obstetricia II", "Cirugía II", "Urgencias"]
-    },
-    {
-        semestre: "8vo Semestre",
-        materias: ["Psiquiatría", "Dermatología", "Oftalmología", "Otorrinolaringología", "Ortopedia"]
-    },
-    {
-        semestre: "9no Semestre",
-        materias: ["Internado Medicina Interna", "Internado Pediatría", "Internado Gineco-Obstetricia", "Internado Cirugía"]
-    },
-    {
-        semestre: "10mo Semestre",
-        materias: ["Internado Electivo", "Internado Comunitario", "Internado de Urgencias"]
-    }
-];
-
-materiasPorSemestre.forEach((sem) => {
-    const divSemestre = document.createElement("div");
-    divSemestre.className = "semestre";
-
-    const titulo = document.createElement("h2");
-    titulo.textContent = sem.semestre;
-    divSemestre.appendChild(titulo);
-
-    const lista = document.createElement("div");
-    lista.className = "ramo-lista";
-
-    sem.materias.forEach((materia) => {
-        const divMateria = document.createElement("div");
-        divMateria.className = "ramo habilitado";
-        divMateria.textContent = materia;
-        lista.appendChild(divMateria);
-    });
-
-    divSemestre.appendChild(lista);
-    malla.appendChild(divSemestre);
-});
-    </script>
     <script src="script.js"></script>
 </body>
 </html>
