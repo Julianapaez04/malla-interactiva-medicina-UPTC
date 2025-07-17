@@ -1,3 +1,4 @@
+// Datos de la malla curricular (ejemplo estructurado, puedes editar el contenido a tu gusto)
 const ramos = [
     { id: "biologia-celular", nombre: "Biología Celular", semestre: 1 },
     { id: "biologia-molecular", nombre: "Biología Molecular", semestre: 1 },
@@ -47,13 +48,16 @@ const ramos = [
     { id: "atencion-primaria", nombre: "Atención Primaria en Salud", semestre: 11 }
 ];
 
+// Materias aprobadas por el usuario
 const ramosAprobados = new Set();
 
+// Verifica si los requisitos de una materia están aprobados
 function requisitosAprobados(ramo) {
     if (!ramo.req) return true;
     return ramo.req.every(r => ramosAprobados.has(r));
 }
 
+// Renderiza la malla curricular interactiva
 function renderMalla() {
     const container = document.getElementById('malla');
     container.innerHTML = '';
