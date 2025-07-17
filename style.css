@@ -1,0 +1,61 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f4f4;
+  color: #2d3436;
+  padding: 2rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.semestre {
+  margin-bottom: 3rem;
+}
+
+.semestre h2 {
+  background-color: #0984e3;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.materias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.materia {
+  background: #dfe6e9;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.materia:hover {
+  background: #b2bec3;
+}
+
+/* Estados de materias */
+.aprobada {
+  background-color: #55efc4 !important;
+  color: #2d3436;
+  font-weight: bold;
+}
+
+.cursando {
+  background-color: #ffeaa7 !important;
+  color: #2d3436;
+  font-weight: bold;
+}
+
+.pendiente {
+  background-color: #fab1a0 !important;
+  color: #2d3436;
+  font-weight: bold;
+}
