@@ -1,7 +1,7 @@
 body {
-    background: #fdf6fb;
+    background: #d4f1f4; /* Baby Blue */
     font-family: 'Segoe UI', Arial, sans-serif;
-    color: #3c2a4d;
+    color: #05445e; /* Navy Blue */
     margin: 0;
     padding: 0 0 50px 0;
 }
@@ -9,52 +9,53 @@ body {
 h1 {
     text-align: center;
     margin-top: 30px;
-    color: #784F58;
+    color: #05445e; /* Navy Blue */
 }
 
 #malla {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 24px;
+    gap: 18px; /* Menor separación */
     margin-top: 40px;
 }
 
 .semestre {
-    background: #f3e8ff;
+    background: #75e6da; /* Blue Green */
     border-radius: 15px;
-    box-shadow: 0 6px 24px #b49fcc34;
-    padding: 18px 16px 20px 16px;
-    margin: 12px;
-    min-width: 250px;
-    width: 270px;
+    box-shadow: 0 6px 24px #189ab480; /* Blue Grotto, semi-transparente */
+    padding: 12px 8px 14px 8px; /* Menos padding */
+    margin: 8px;
+    min-width: 120px;
+    width: 160px; /* Más delgado */
     flex-grow: 1;
+    border: 2px solid #05445e; /* Navy Blue */
 }
 
 .semestre h2 {
-    background: #c3e6cb;
+    background: #189ab4; /* Blue Grotto */
     border-radius: 8px;
-    padding: 7px 0 7px 0;
+    padding: 5px 0 5px 0; /* Menos padding */
     text-align: center;
-    margin: 0 0 16px 0;
-    font-size: 1.15em;
-    color: #3f5957;
+    margin: 0 0 10px 0;
+    font-size: 1em;
+    color: #d4f1f4; /* Baby Blue */
     letter-spacing: 0.5px;
 }
 
 .ramo-lista {
     display: flex;
     flex-direction: column;
-    gap: 9px;
+    gap: 7px;
 }
 
 .ramo {
-    background: #74b9ff;
-    border: 2px solid #b2bec3;
+    background: #189ab4; /* Blue Grotto */
+    border: 2px solid #05445e; /* Navy Blue */
     border-radius: 8px;
-    padding: 12px 7px 12px 16px;
-    font-size: 1em;
-    color: #2d3436;
+    padding: 8px 5px 8px 10px; /* Menos padding */
+    font-size: 0.93em;
+    color: #d4f1f4; /* Baby Blue */
     cursor: pointer;
     outline: none;
     transition: background 0.2s, border 0.2s, color 0.2s;
@@ -66,26 +67,28 @@ h1 {
 
 .ramo.habilitado {
     opacity: 1;
-    background: #a29bfe;
-    border-color: #6c5ce7;
+    background: #75e6da; /* Blue Green */
+    border-color: #189ab4; /* Blue Grotto */
+    color: #05445e; /* Navy Blue */
     cursor: pointer;
 }
 
 .ramo.aprobado {
-    background: #ffeaa7;
-    color: #00b894;
-    border-color: #00b894;
+    background: #05445e; /* Navy Blue */
+    color: #75e6da; /* Blue Green */
+    border-color: #189ab4; /* Blue Grotto */
     opacity: 1;
     cursor: default;
 }
 
 .requisitos {
-    color: #7a7a7a;
+    color: #05445e; /* Navy Blue */
     font-size: 0.92em;
-    margin-top: 16px;
-    background: #e3e7fd;
+    margin-top: 10px;
+    background: #d4f1f4; /* Baby Blue */
     border-radius: 7px;
-    padding: 7px 7px 7px 10px;
+    padding: 5px 5px 5px 8px;
+    border: 1px solid #189ab4; /* Blue Grotto */
 }
 
 @media (max-width: 900px) {
@@ -95,6 +98,6 @@ h1 {
     }
     .semestre {
         width: 95vw;
-        min-width: 240px;
+        min-width: 120px;
     }
 }
