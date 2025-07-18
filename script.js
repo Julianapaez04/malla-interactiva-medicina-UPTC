@@ -20,7 +20,6 @@ const ramos = [
     { id: "sis-cardio", nombre: "Sistema Cardiovascular y Respiratorio", semestre: 3, req: ["anat-fisio", "neurociencias"]},
     { id: "sis-genit", nombre: "Sistema Genitourinario y Reproductivo", semestre: 3, req: ["anat-fisio", "neurociencias"]},
     { id: "sis-gastro", nombre: "Sistema Gastrointestinal y Nutrición", semestre: 3, req: ["anat-fisio", "neurociencias"]},
-
     { id: "seminario2", nombre: "Seminario de Investigación II", semestre: 3, req:["seminario1"]},
     { id: "antropologia", nombre: "Sociohumanidades I (Antropología)", semestre: 3 },
 
