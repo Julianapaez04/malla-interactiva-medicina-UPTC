@@ -1,4 +1,3 @@
-// Datos de la malla curricular (ejemplo estructurado, puedes editar el contenido a tu gusto)
 const ramos = [
     { id: "biologia-celular", nombre: "Biología Celular", semestre: 1 },
     { id: "biologia-molecular", nombre: "Biología Molecular", semestre: 1 },
@@ -13,9 +12,12 @@ const ramos = [
     { id: "bioetica", nombre: "Bioética", semestre: 2 },
     { id: "seminario1", nombre: "Seminario de Investigación I", semestre: 2 },
     { id: "etica", nombre: "Ética y Política", semestre: 2 },
-    { id: "sis-cardio", nombre: "Sistema Cardiovascular y Respiratorio", semestre: 3, req:["anat-fisio"]},
-    { id: "sis-genit", nombre: "Sistema Genitourinario y Reproductivo", semestre: 3, req:["anat-fisio"]},
-    { id: "sis-gastro", nombre: "Sistema Gastrointestinal y Nutrición", semestre: 3, req:["anat-fisio"]},
+
+    // Los tres sistemas requieren neurociencias
+    { id: "sis-cardio", nombre: "Sistema Cardiovascular y Respiratorio", semestre: 3, req: ["anat-fisio", "neurociencias"]},
+    { id: "sis-genit", nombre: "Sistema Genitourinario y Reproductivo", semestre: 3, req: ["anat-fisio", "neurociencias"]},
+    { id: "sis-gastro", nombre: "Sistema Gastrointestinal y Nutrición", semestre: 3, req: ["anat-fisio", "neurociencias"]},
+
     { id: "seminario2", nombre: "Seminario de Investigación II", semestre: 3, req:["seminario1"]},
     { id: "antropologia", nombre: "Sociohumanidades I (Antropología)", semestre: 3 },
     { id: "inmuno", nombre: "Inmunohematología", semestre: 4, req:["sis-cardio", "sis-genit", "sis-gastro"]},
@@ -48,16 +50,51 @@ const ramos = [
     { id: "atencion-primaria", nombre: "Atención Primaria en Salud", semestre: 11 }
 ];
 
-// Materias aprobadas por el usuario
 const ramosAprobados = new Set();
 
-// Verifica si los requisitos de una materia están aprobados
+function requisitosPrimerosCincoAprobados() {
+    return ramos
+        .filter(r => r.semestre >= 1 && r.semestre <= 5)
+        .every(r => ramosAprobados.has(r.id));
+}
+
 function requisitosAprobados(ramo) {
+    if (ramo.semestre >= 6 && !requisitosPrimerosCincoAprobados()) return false;
     if (!ramo.req) return true;
     return ramo.req.every(r => ramosAprobados.has(r));
 }
 
-// Renderiza la malla curricular interactiva
+function mostrarAdvertencia(ramo) {
+    const modal = document.getElementById('modalAdvertencia');
+    const titulo = document.getElementById('modalTitulo');
+    const mensaje = document.getElementById('modalMensaje');
+    titulo.textContent = `No puedes abrir "${ramo.nombre}" aún`;
+
+    if (ramo.semestre >= 6 && !requisitosPrimerosCincoAprobados()) {
+        mensaje.innerHTML = `Debes aprobar <b>todas las materias de 1° a 5° semestre</b> antes de continuar.<br>
+        <small>Completa los primeros semestres para desbloquear los siguientes.</small>`;
+    } else if (ramo.req && ramo.req.includes("neurociencias") && !ramosAprobados.has("neurociencias")) {
+        mensaje.innerHTML = `Debes aprobar <b>Neurociencias</b> antes de desbloquear los sistemas.<br>
+        <small>Selecciona la materia "Neurociencias" en 2° semestre para continuar.</small>`;
+    } else {
+        mensaje.innerHTML = `Aún no has cumplido todos los <b>pre-requisitos</b> para esta materia.<br>
+        <small>Revisa las materias previas que necesitas aprobar.</small>`;
+    }
+
+    modal.style.display = 'block';
+}
+
+// Cerrar modal al hacer clic en la X o fuera del cuadro
+window.onload = function() {
+    renderMalla();
+    const modal = document.getElementById('modalAdvertencia');
+    const cerrarModal = document.getElementById('cerrarModal');
+    cerrarModal.onclick = () => { modal.style.display = 'none'; };
+    window.onclick = function(event) {
+        if (event.target == modal) modal.style.display = 'none';
+    };
+};
+
 function renderMalla() {
     const container = document.getElementById('malla');
     container.innerHTML = '';
@@ -75,22 +112,23 @@ function renderMalla() {
             const btn = document.createElement('div');
             btn.className = 'ramo';
             btn.id = ramo.id;
-            btn.textContent = ramo.nombre;
+            btn.textContent = ramosAprobados.has(ramo.id) ? ('✔ ' + ramo.nombre) : ramo.nombre;
             if(requisitosAprobados(ramo)) btn.classList.add('habilitado');
-            if(ramosAprobados.has(ramo.id)) {
-                btn.classList.add('aprobado');
-                btn.textContent = '✔ ' + ramo.nombre;
-            }
-            if(requisitosAprobados(ramo) && !ramosAprobados.has(ramo.id)) {
-                btn.addEventListener('click', () => {
-                    ramosAprobados.add(ramo.id);
+            if(ramosAprobados.has(ramo.id)) btn.classList.add('aprobado');
+            btn.addEventListener('click', () => {
+                if (!requisitosAprobados(ramo)) {
+                    mostrarAdvertencia(ramo);
+                } else if (ramosAprobados.has(ramo.id)) {
+                    ramosAprobados.delete(ramo.id); // desmarcar
                     renderMalla();
-                });
-            }
+                } else {
+                    ramosAprobados.add(ramo.id); // marcar
+                    renderMalla();
+                }
+            });
             lista.appendChild(btn);
         }
         bloque.appendChild(lista);
         container.appendChild(bloque);
     }
 }
-window.onload = renderMalla;
