@@ -9,14 +9,14 @@ body {
 h1 {
     text-align: center;
     margin-top: 30px;
-    color: #05445e; /* Navy Blue */
+    color: #05445e;
 }
 
 #malla {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 18px; /* Menor separación */
+    gap: 18px;
     margin-top: 40px;
 }
 
@@ -24,22 +24,22 @@ h1 {
     background: #75e6da; /* Blue Green */
     border-radius: 15px;
     box-shadow: 0 6px 24px #189ab480; /* Blue Grotto, semi-transparente */
-    padding: 12px 8px 14px 8px; /* Menos padding */
+    padding: 12px 8px 14px 8px;
     margin: 8px;
     min-width: 120px;
-    width: 160px; /* Más delgado */
+    width: 160px;
     flex-grow: 1;
-    border: 2px solid #05445e; /* Navy Blue */
+    border: 2px solid #05445e;
 }
 
 .semestre h2 {
     background: #189ab4; /* Blue Grotto */
     border-radius: 8px;
-    padding: 5px 0 5px 0; /* Menos padding */
+    padding: 5px 0 5px 0;
     text-align: center;
     margin: 0 0 10px 0;
     font-size: 1em;
-    color: #d4f1f4; /* Baby Blue */
+    color: #d4f1f4;
     letter-spacing: 0.5px;
 }
 
@@ -53,7 +53,7 @@ h1 {
     background: #189ab4; /* Blue Grotto */
     border: 2px solid #05445e; /* Navy Blue */
     border-radius: 8px;
-    padding: 8px 5px 8px 10px; /* Menos padding */
+    padding: 8px 5px 8px 10px;
     font-size: 0.93em;
     color: #d4f1f4; /* Baby Blue */
     cursor: pointer;
@@ -78,7 +78,7 @@ h1 {
     color: #75e6da; /* Blue Green */
     border-color: #189ab4; /* Blue Grotto */
     opacity: 1;
-    cursor: default;
+    cursor: pointer;
 }
 
 .requisitos {
@@ -100,4 +100,53 @@ h1 {
         width: 95vw;
         min-width: 120px;
     }
+}
+
+/* Modal bonito para advertencias */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(5, 68, 94, 0.25); /* Navy Blue semi-transparente */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 24px 28px;
+    border: 2px solid #189ab4;
+    border-radius: 20px;
+    width: 90vw;
+    max-width: 400px;
+    box-shadow: 0 6px 24px #05445e33;
+    color: #05445e;
+    text-align: center;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+    color: #189ab4;
+}
+
+.close {
+    color: #189ab4;
+    float: right;
+    font-size: 2em;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: -10px;
+    margin-right: -10px;
+}
+
+.close:hover,
+.close:focus {
+    color: #05445e;
+    text-decoration: none;
+    cursor: pointer;
 }
