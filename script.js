@@ -32,15 +32,15 @@ const ramos = [
     { id: "sociologia", nombre: "Sociohumanidades II (Sociología)", semestre: 4 },
 
     // 5to semestre
-    { id: "psicologia", nombre: "Psicología por Sistemas", semestre: 5, req: ["neurociencias", "bioquimica-medica"]},
+    { id: "patologia-sistemas", nombre: "Patología por Sistemas", semestre: 5, req: ["patologia"]},
     { id: "infecciosas2", nombre: "Enfermedades Infecciosas II", semestre: 5, req: ["infecciosas1"]},
     { id: "farmacologia", nombre: "Farmacología", semestre: 5, req: ["neurociencias", "bioquimica-medica"]},
-    { id: "salud-mental", nombre: "Salud Mental", semestre: 5, req: ["patologia", "infecciosas1"]},
+    { id: "salud-mental", nombre: "Salud Mental", semestre: 5 }, // sin prerequisitos
     { id: "historia-med", nombre: "Historia de la Medicina", semestre: 5 },
 
     // 6to semestre
     { id: "semiologia", nombre: "Semiología", semestre: 6 },
-    { id: "psiquiatria", nombre: "Psiquiatría", semestre: 6, req: ["psicologia", "salud-mental"]},
+    { id: "psiquiatria", nombre: "Psiquiatría", semestre: 6, req: ["salud-mental"]},
 
     // 7mo semestre
     { id: "adulto", nombre: "Medicina del Adulto y Vejez", semestre: 7, req: ["semiologia"]},
@@ -102,6 +102,9 @@ function mostrarAdvertencia(ramo) {
     } else if (ramo.req && ramo.req.includes("gestion1") && !ramosAprobados.has("gestion1")) {
         mensaje.innerHTML = `Debes aprobar <b>Gestión I</b> antes de abrir Gestión II.<br>
         <small>Selecciona la materia "Gestión I" en 9° semestre para continuar.</small>`;
+    } else if (ramo.req && ramo.req.includes("patologia") && !ramosAprobados.has("patologia")) {
+        mensaje.innerHTML = `Debes aprobar <b>Patología General</b> antes de abrir Patología por Sistemas.<br>
+        <small>Selecciona la materia "Patología General" en 4° semestre para continuar.</small>`;
     } else {
         mensaje.innerHTML = `Aún no has cumplido todos los <b>pre-requisitos</b> para esta materia.<br>
         <small>Revisa las materias previas que necesitas aprobar.</small>`;
